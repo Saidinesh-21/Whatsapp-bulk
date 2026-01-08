@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Bulk Messenger",
+  "version": "1.0.0",
+  "description": "Send bulk custom WhatsApp messages from CSV",
+  "permissions": [
+    "tabs",
+    "scripting",
+    "storage",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://web.whatsapp.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "WhatsApp Bulk Messenger",
+    "default_icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+  {
+    "matches": ["https://web.whatsapp.com/*"],
+    "js": ["content.js"]
+  }
+]
+
+,"commands": {
+  "wabulk-stop": {
+    "suggested_key": {
+      "default": "Ctrl+Shift+S"
+    },
+    "description": "Stop WhatsApp Bulk campaign"
+  }
+}
+}

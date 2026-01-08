@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Bulk Messenger</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📱 WhatsApp Bulk Messenger</h1>
+        
+        <!-- Step 1: Upload CSV -->
+        <div class="section">
+            <h2>Step 1: Upload CSV File</h2>
+            <p class="help-text">Format: Phone,Name,Message (no headers)</p>
+            <div class="csv-upload">
+                <input type="file" id="csvFile" accept=".csv" />
+                <button id="uploadBtn" class="btn btn-primary">📤 Upload CSV</button>
+            </div>
+            <div id="fileStatus" class="status-message"></div>
+        </div>
+
+        <!-- Step 2: Preview & Settings -->
+        <div class="section" id="previewSection" style="display:none;">
+            <h2>Step 2: Review Contacts</h2>
+            
+            <div class="settings-group">
+                <label for="delayInput">⏱️ Delay Between Messages (seconds):</label>
+                <input type="number" id="delayInput" min="5" max="60" value="10" />
+                <small>Recommended: 8-15 seconds</small>
+            </div>
+
+            <div class="settings-group">
+                <label>
+                    <input type="checkbox" id="randomizeDelay" checked />
+                    🎲 Randomize delays (±50%)
+                </label>
+                <small>Makes timing more human-like</small>
+            </div>
+
+            <div class="settings-group">
+                <label for="batchSize">📦 Messages Per Batch:</label>
+                <input type="number" id="batchSize" min="1" max="50" value="10" />
+                <small>Pause after this many messages</small>
+            </div>
+
+            <div class="settings-group">
+                <label for="batchDelay">⏸️ Delay Between Batches (seconds):</label>
+                <input type="number" id="batchDelay" min="10" max="300" value="60" />
+                <small>Rest time between batches</small>
+            </div>
+
+            <h3>📋 Contacts Preview</h3>
+            <div id="contactsList" class="contacts-list">
+                <!-- Contacts will be listed here -->
+            </div>
+        </div>
+
+        <!-- Step 3: Campaign Status -->
+        <div class="section" id="campaignSection" style="display:none;">
+            <h2>Step 3: Campaign Status</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalCount">0</div>
+                    <div class="stat-label">Total</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value success" id="sentCount">0</div>
+                    <div class="stat-label">Sent ✅</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value pending" id="pendingCount">0</div>
+                    <div class="stat-label">Pending ⏳</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value error" id="failedCount">0</div>
+                    <div class="stat-label">Failed ❌</div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progressPercent">0%</span> complete
+                </div>
+            </div>
+
+            <div id="campaignLog" class="campaign-log">
+                <!-- Log entries will appear here -->
+            </div>
+
+            <div class="campaign-actions">
+                <button id="startBtn" class="btn btn-success">▶️ Start Campaign</button>
+                <button id="pauseBtn" class="btn btn-warning" style="display:none;">⏸️ Pause</button>
+                <button id="stopBtn" class="btn btn-danger" style="display:none;">⏹️ Stop</button>
+                <button id="resetBtn" class="btn btn-secondary">🔄 Reset</button>
+            </div>
+
+            <div id="campaignWarning" class="warning" style="display:none;">
+                ⚠️ Keep WhatsApp Web tab open during campaign!
+            </div>
+        </div>
+
+        <!-- Verification Step -->
+        <div class="section" id="verificationSection" style="display:none;">
+            <h2>⚠️ Before Starting</h2>
+            <div class="verification-checklist">
+                <label class="checkbox-item">
+                    <input type="checkbox" id="checkWhatsApp" />
+                    ✅ I have WhatsApp Web open (web.whatsapp.com)
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="checkLogin" />
+                    ✅ I'm logged into WhatsApp Web
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="checkConsent" />
+                    ✅ I have consent from all contacts
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="checkAbuse" />
+                    ✅ This is not spam or abuse
+                </label>
+            </div>
+            <button id="proceedBtn" class="btn btn-primary" disabled>Proceed to Campaign</button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <small>v1.0.0 | Built for B2B messaging</small>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

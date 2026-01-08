@@ -1,0 +1,18 @@
+body{font-family:Inter,system-ui,Arial,Helvetica,sans-serif;margin:0;background:#f6f8fc;color:#0b1220}
+.panel{width:100%;height:100vh;box-sizing:border-box;padding:12px}
+header{display:flex;align-items:center;justify-content:space-between}
+header h1{margin:0;font-size:18px}
+.meta{font-size:12px;color:#555}
+.stats{display:flex;gap:12px;margin-top:12px}
+.stat{background:#fff;padding:10px;border-radius:6px;flex:1;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,0.05)}
+.stat .label{font-size:12px;color:#666}
+.stat .value{font-size:20px;margin-top:6px}
+.controls{margin-top:12px}
+.btn{padding:8px 12px;border-radius:6px;border:none;background:#2b6cb0;color:#fff;margin-right:8px;cursor:pointer}
+.btn.danger{background:#e53e3e}
+.log{margin-top:12px}
+.logArea{background:#fff;height:48vh;overflow:auto;padding:8px;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,0.05)}
+.log-entry{font-size:12px;padding:6px;border-bottom:1px solid #f0f0f0}
+.log-entry.info{color:#0b74d6}
+.log-entry.success{color:#0b9b4a}
+.log-entry.error{color:#e53e3e}

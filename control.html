@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WABulk Control Panel</title>
+  <link rel="stylesheet" href="control.css">
+</head>
+<body>
+  <div class="panel">
+    <header>
+      <h1>WABulk Control Panel</h1>
+      <div id="campaignId" class="meta"></div>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <div class="label">Total</div>
+        <div id="totalCount" class="value">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Sent</div>
+        <div id="sentCount" class="value">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Failed</div>
+        <div id="failedCount" class="value">0</div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="pauseBtn" class="btn">⏸️ Pause</button>
+      <button id="resumeBtn" class="btn" style="display:none;">▶️ Resume</button>
+      <button id="stopBtn" class="btn danger">⏹️ Stop</button>
+    </section>
+
+    <section class="log">
+      <h3>Logs</h3>
+      <div id="logArea" class="logArea"></div>
+    </section>
+  </div>
+
+  <script src="control.js"></script>
+</body>
+</html>
